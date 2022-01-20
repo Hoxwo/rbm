@@ -8,24 +8,36 @@ public class Band {
     double talent;     //1-9
     double creativity; //1-9
     int income;     //10-500
+    int currentMoney;
     int fans;       //in thousands, 1 - 999
     List<Musician> members = new ArrayList<Musician>();
     BandTrait trait1;
     BandTrait trait2;
 
-    public Band(String name, double talent, double creativity, int income, BandTrait trait1, BandTrait trait2, int fans) {
+    public Band(String name, double talent, double creativity, int income, int currentMoney, BandTrait trait1, BandTrait trait2, int fans) {
         this.name = name;
         this.talent = talent;
         this.creativity = creativity;
         this.income = income;
+        this.currentMoney = currentMoney;
         this.trait1 = trait1;
         this.trait2 = trait2;
         this.members = new ArrayList<Musician>();
         this.fans = fans;
     }
 
+    public Band(String name) {
+        this.name = name;
+        this.talent = 0.0;
+        this.creativity = 0.0;
+        this.income = 0;
+        this.currentMoney = 30;
+        this.members = new ArrayList<Musician>();
+        this.fans = 1;
+    }
+
     public double calculateAverageTalent() {
-        double runningTotal = 0.0;
+        double runningTotal = 1.0;
         for(Musician oneMember : members) {
             runningTotal += oneMember.getTalent();
         }
@@ -79,6 +91,10 @@ public class Band {
         return income;
     }
 
+    public int getCurrentMoney() {
+        return currentMoney;
+    }
+
     public BandTrait getTrait1() {
         return trait1;
     }
@@ -109,6 +125,10 @@ public class Band {
 
     public void setIncome(int income) {
         this.income = income;
+    }
+
+    public void setCurrentMoney(int currentMoney) {
+        this.currentMoney = currentMoney;
     }
 
     public void setTrait1(BandTrait trait1) {
